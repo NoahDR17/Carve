@@ -17,3 +17,20 @@ class Profile(models.Model):
             height_m = self.height_cm / 100
             return round(self.weight_kg / (height_m ** 2), 2)
         return None
+
+class ProgressStat(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='progress_stats')
+    date = models.DateField(auto_now_add=True)
+    weight_kg = models.FloatField()
+    body_fat_percentage = models.FloatField(null=True, blank=True)
+    notes = models.TextField(blank=True)
+
+    def bmi(self):
+        profile = self.user.profile
+        if profile.height_cm:
+            height_m = profile.height_cm / 100
+            return round(self.weight_kg / (height_m ** 2), 2)
+        return None
+
+    def __str__(self):
+        return f"{self.user.username} - {self.date} - {self.weight_kg}kg"

@@ -34,8 +34,11 @@ DATABASES = {
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+'8000-noahdr17-carve-xr9temdl9eo.ws-eu120.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-noahdr17-carve-xr9temdl9eo.ws-eu120.gitpod.io",
+]
 
 # Application definition
 
